@@ -22,6 +22,7 @@ public class Applicant {
     }
 
     //TODO: send the CV when applying
+
     public void applyToPosting(JobPosting posting){
         for (int i = 0; i<= JobApplicationSystem.Jobs.size(); i++){
             if (JobApplicationSystem.Jobs.get(i).Title.equals(posting.Title)){
