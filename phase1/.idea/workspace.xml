@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0f000e4-d041-4921-b7a6-b3e84d772ef0" name="Default Changelist" comment="New Class Write File">
+    <list default="true" id="f0f000e4-d041-4921-b7a6-b3e84d772ef0" name="Default Changelist" comment="new methods in Write class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Applicant.java" beforeDir="false" afterPath="$PROJECT_DIR$/Applicant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WriteFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/WriteFile.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -68,8 +67,8 @@
       <file leaf-file-name="WriteFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WriteFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="2" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="2" />
+            <state relative-caret-position="510">
+              <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#218#219#0" expanded="true" />
@@ -128,7 +127,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="512" />
     <option name="width" value="928" />
     <option name="height" value="900" />
@@ -240,11 +239,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562793943288</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="new methods in Write class">
+      <created>1562796457653</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1562796457653</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="512" y="0" width="928" height="900" extended-state="0" />
+    <frame x="700" y="0" width="740" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
@@ -306,7 +312,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Read file: new methods" />
     <MESSAGE value="New Class Write File" />
-    <option name="LAST_COMMIT_MESSAGE" value="New Class Write File" />
+    <MESSAGE value="new methods in Write class" />
+    <option name="LAST_COMMIT_MESSAGE" value="new methods in Write class" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/JobApplicationSystem.java">
@@ -468,8 +475,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WriteFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="2" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="2" />
+        <state relative-caret-position="510">
+          <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#218#219#0" expanded="true" />
