@@ -11,6 +11,16 @@ public class Applicant {
         this.allJobsAppliedTo = new ArrayList<>();
     }
 
+    // TODO: Method added by Marko
+    public JobPosting findPosting(String title) {
+        for (int i = 0; i<= JobApplicationSystem.Jobs.size(); i++) {
+            if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
+                return JobApplicationSystem.Jobs.get(i);
+            }
+        }
+        return null;
+    }
+
     //TODO: send the CV when applying
     public void applyToPosting(JobPosting posting){
         for (int i = 0; i<= JobApplicationSystem.Jobs.size(); i++){
