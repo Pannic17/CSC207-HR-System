@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ApplicantPrompts {
@@ -49,7 +50,17 @@ public class ApplicantPrompts {
         } else if (choice == 4) {
             applyToPostingPrompt(applicant);
         } else if (choice == 5) {
-
+            withdrawFromJobPostingPrompt(applicant);
+        } else if (choice == 6) {
+            applicant.getNotifiations();
+        } else if (choice == 7) {
+            ArrayList allJobs = applicant.getHistory();
+            for (int i = 0; i < allJobs.size(); i++) {
+                System.out.println(allJobs.get(i));
+            }
+        } else if (choice == 8) {
+            LoginClass lc = new LoginClass();
+            lc.startingPrompt();
         } else {
             System.out.println("Please choose one of the above options.");
             applicantOptionsPrompt(applicant);
@@ -60,13 +71,26 @@ public class ApplicantPrompts {
     public void applyToPostingPrompt(Applicant applicant) {
         String jobName = getPostingNamePrompt();
         JobPosting job = Applicant.findPosting(jobName);
-        applicant.applyToPosting(job);
+        if (job == null){cannotFindJobPostingPrompt(applicant);}
+        else{applicant.applyToPosting(job);}
+    }
+
+    public void withdrawFromJobPostingPrompt(Applicant applicant){
+        String jobName = getPostingNamePrompt();
+        JobPosting job = Applicant.findPosting(jobName);
+        if (job == null){cannotFindJobPostingPrompt(applicant);}
+        else{applicant.withdraw(job);}
     }
 
     public String getPostingNamePrompt() {
-        System.out.println("Please enter the name of the posting you are applying to:");
+        System.out.println("Please enter the name of the posting :");
         Scanner in = new Scanner(System.in);
         return in.nextLine();
+    }
+
+    public void cannotFindJobPostingPrompt(Applicant applicant){
+        System.out.println("Cannot Find a jobPosting with that name.");
+        applicantOptionsPrompt(applicant);
     }
 
 }

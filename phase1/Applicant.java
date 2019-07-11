@@ -109,8 +109,9 @@ public class Applicant {
             return "Applied";
         }
     }
-
+//  TODO: implement notifcation interface
     public void getNotifiations() {
+
     }
 
     public ArrayList<JobPosting> getHistory() {
@@ -118,9 +119,6 @@ public class Applicant {
         return allJobsAppliedTo;
     }
 
-    public void positionFilled() {
-        // TODO:
-    }
 
     public void checkInterview() {
 
