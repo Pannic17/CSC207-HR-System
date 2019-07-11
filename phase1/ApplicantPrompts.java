@@ -6,7 +6,10 @@ public class ApplicantPrompts {
     }
 
     public void createNewApplicantPrompt() {
-        System.out.println("To Create a new Applicant Account Plese enter a user name:");
+//        TODO: save the username and pasword to an external file
+//        learn password encryption for phase 2 and requirements for password
+//        Phase 2 will have a password class
+        System.out.println("To Create a new Applicant Account Plese enter a username:");
         Scanner in = new Scanner(System.in);
         String username = in.nextLine();
         if (!Applicant.applicantExist(username)) {
@@ -17,6 +20,7 @@ public class ApplicantPrompts {
             System.out.println("A new Applicant account has been created");
             System.out.println(applicant);
             JobApplicationSystem.Applicants.add(applicant);
+            //
             applicantOptionsPrompt(applicant);
         } else {
             System.out.println("This username already exists please choose a different username:");
@@ -92,5 +96,6 @@ public class ApplicantPrompts {
         System.out.println("Cannot Find a jobPosting with that name.");
         applicantOptionsPrompt(applicant);
     }
+
 
 }
