@@ -6,6 +6,7 @@ public class ApplicantPrompts {
     }
 
     public void createNewApplicantPrompt() {
+        System.out.println("To Create a new Applicant Account Plese enter a user name:");
 //        TODO: save the username and pasword to an external file
 //        learn password encryption for phase 2 and requirements for password
 //        Phase 2 will have a password class
