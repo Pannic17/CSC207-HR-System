@@ -7,6 +7,10 @@ public class JobApplicationSystem {
     public static ArrayList<Interviewer> Interviewers = new ArrayList<>();
 // testing push leila
 // testing push Tejbeer
-    // testing push Abdulahad
+// testing push Abdulahad
 
+public static void main(String[] args) {
+    LoginClass lg = new LoginClass();
+    lg.startingPrompt();
+}
 }
