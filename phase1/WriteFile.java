@@ -12,9 +12,6 @@ public class WriteFile {
 
 
     public void writeToFile(String textLine) throws IOException {
-        //TODO:  check if the file exists
-
-
         // file writer takes care of opening the correct file and storing the text as bytes
         FileWriter write = new FileWriter(path);
 
@@ -26,7 +23,7 @@ public class WriteFile {
 
 
     public void bufferedWriteToFile(File file, String content) throws IOException {
-        //TODO:  Do I need to check if the file exists?
+
         try{
         // file writer takes care of opening the correct file and storing the text as bytes
         FileWriter filewriter= new FileWriter(file.getPath());
@@ -43,19 +40,16 @@ public class WriteFile {
     }
 
 
-    public void createTextFile(String filename) {
-        // check if the file already exists
+    public static void createTextFile(String filename) {
         File file = new File(filename + ".txt");
 
     }
 
-    public void createCSVFile(String filename) {
+    public static void createCSVFile(String filename) {
         // check if the file already exists
         File file = new File(filename + ".csv");
     }
 
-
-    // TODO: method  -   public boolean checkIfFileExists(){}
 
 
 }

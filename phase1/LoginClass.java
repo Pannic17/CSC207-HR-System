@@ -10,6 +10,7 @@ public class LoginClass {
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
         if (choice == 1) {
+            createLoginFiles();
             System.out.println("Please select one of the options below:" + "\n1. Applicant" + "\n2. Interviewer" + "\n3. HR Coordinator" + "\n4. Back");
             Scanner loginTypeInput = new Scanner(System.in);
             int type = loginTypeInput.nextInt();
@@ -39,12 +40,20 @@ public class LoginClass {
         }
     }
 
+    public void createLoginFiles() {
+        WriteFile.createTextFile("ApplicantLoginFile");
+        WriteFile.createTextFile("InterviewerLoginFile");
+        WriteFile.createTextFile("HRLoginFile");
+    }
+
+
     public void createNewUser() {
         System.out.println("To Create a new user, Please select one of the options below:" + "\n1. Applicant" + "\n2. Interviewer" + "\n3. HR-Coordinator" + "\n4. Back");
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
         if (choice == 1) {
-            createNewApplicant(); // TODO:
+            ApplicantPrompts ap = new ApplicantPrompts();
+            ap.createNewApplicantPrompt();
         } else if (choice == 2) {
             createNewInterviewer();// TODO:
         } else if (choice == 3) {
@@ -68,6 +77,8 @@ public class LoginClass {
     }
 
     public void applicantLogin() {
+        ApplicantPrompts ap = new ApplicantPrompts();
+
 
     }
 
