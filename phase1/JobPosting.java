@@ -1,5 +1,5 @@
 // TODO: in every for statement check if <= is required or <
-// TODO: Add a toString method that gives all the nexessary information about the posting
+
 
 
 import java.time.LocalDate;
@@ -31,6 +31,12 @@ public class JobPosting {
         return "Title: " + this.Title + "\n Type:" + this.Type + "\n Description: " + this.Description;
     }
 
+    //Added by tejbeer
+    public String toString(){
+        return "Title: " + this.Title + "\n Type:" + this.Type + "\n Description: " + this.Description+"\n Requirements"+this.Requirements+
+                "\n PostedDate:"+this.PostedDate+"\n CloseDate:"+this.CloseDate+"\n Status:"+ this.checkStatus();
+    }
+
     // Added by tejbeer
     public boolean checkApplicantHired(Applicant applicant) {
         for (int i = 0; i < this.hiredList.size(); i++) {
@@ -42,14 +48,14 @@ public class JobPosting {
     }
 
     // added by tejbeer
-    public void viewAllPostings() {
+    public static void viewAllPostings() {
         for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {
-
+            System.out.println(JobApplicationSystem.Jobs);
         }
     }
 
     //    Edited by tejbeer
-    public JobPosting getPosting(String title) {
+    public static JobPosting getPosting(String title) {
         for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {
             if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
                 return JobApplicationSystem.Jobs.get(i);

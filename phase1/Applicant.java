@@ -26,7 +26,8 @@ public class Applicant {
 
 
     // TODO: Method added by Marko
-    public JobPosting findPosting(String title) {
+    // edited by tejbeer (made it static)
+    public static JobPosting findPosting(String title) {
         for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {    //TODO: check if <= is required or =
             if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
                 return JobApplicationSystem.Jobs.get(i);
@@ -90,7 +91,7 @@ public class Applicant {
         // print out every job and its status next to it.
         for (int i = 0; i < this.appliedTo.size(); i++) {
             System.out.println(this.appliedTo.get(i).printForApplicant());
-            System.out.println("Job Status: "+this.getJobStatus(this.allJobsAppliedTo.get(i)));
+            System.out.println("Job Status: "+this.getJobStatus(this.allJobsAppliedTo.get(i))+"\n");
 
         }
     }
