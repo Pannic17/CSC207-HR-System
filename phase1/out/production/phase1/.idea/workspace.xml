@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ee46e3-8a61-42a9-9d74-5909d700ebf4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ApplicantPrompts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JobPostingPrompts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitkeep" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applicant.java" beforeDir="false" afterPath="$PROJECT_DIR$/Applicant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplicationSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplicationSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobPosting.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobPosting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoginClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/LoginClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TextGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/TextGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WriteFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/WriteFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrCoordinator.java" beforeDir="false" afterPath="$PROJECT_DIR$/hrCoordinator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,17 +23,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
-  </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LoginClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="86">
+              <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -30,37 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ApplicantPrompts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13">
-              <caret line="27" column="38" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hrCoordinator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#1752#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Interviewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Notification.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <state relative-caret-position="77">
+              <caret line="7" column="42" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -95,7 +73,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="697" />
@@ -165,7 +143,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -204,6 +182,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ApplicantPrompts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Applicant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -211,40 +196,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Notification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApplicantPrompts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="27" column="38" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hrCoordinator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#1752#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LoginClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Interviewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        <state relative-caret-position="86">
+          <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
         </state>
       </provider>
     </entry>

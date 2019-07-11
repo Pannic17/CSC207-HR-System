@@ -71,7 +71,6 @@ public class LoginClass {
     public void applicantLogin() {
         ApplicantPrompts ap = new ApplicantPrompts();
 
-
     }
 
     public void hrLogin() {
