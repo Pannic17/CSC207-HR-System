@@ -1,3 +1,5 @@
+// TODO: in every for statement check if <= is required or <
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -22,12 +24,20 @@ public class JobPosting {
         this.hiredList = new ArrayList<>(hiredList);
     }
 
+
+//    Edited by tejbeer
     public JobPosting getPosting(String title){
         for (int i = 0; i<= JobApplicationSystem.Jobs.size(); i++){
             if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
                 return JobApplicationSystem.Jobs.get(i);
             }
         }
+//        TODO: if job posting is not found there should be prompt that asks for three options. Aslo do that in TextGUI class
+//                      1. try again
+//                      2. go back (or so option)
+//                      3. exit
+        System.out.println("Job posting not found");
+        return null;
     }
 
     public void setPosting(String title, String info, String newInfo){
@@ -63,7 +73,7 @@ public class JobPosting {
     }
 
     public String checkStatus(){
-        if (positionFilled() == true) {
+        if (positionFilled()) {
             return "Available";
         }
         else {
