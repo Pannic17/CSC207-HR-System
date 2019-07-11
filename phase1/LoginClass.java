@@ -46,6 +46,7 @@ public class LoginClass {
         if (choice == 1) {
             ApplicantPrompts ap = new ApplicantPrompts();
             ap.createNewApplicantPrompt();
+            createNewApplicant(); // TODO:
         } else if (choice == 2) {
             createNewInterviewer();// TODO:
         } else if (choice == 3) {
@@ -69,6 +70,7 @@ public class LoginClass {
     }
 
     public void applicantLogin() {
+
         ApplicantPrompts ap = new ApplicantPrompts();
 
     }
