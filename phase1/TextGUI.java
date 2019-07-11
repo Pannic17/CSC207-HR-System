@@ -10,10 +10,7 @@ public class TextGUI {
         System.out.println("Please enter \"applicant\", \"coordinator\", or \"interviewer\" to select your user-type:");
         String memberType = input.next();
         if (memberType.equals("applicant")) {
-            System.out.println("Enter your full name:");
-            String fullName = input.next();
-            System.out.println("Enter your CV (you may use \"\\n\" to add space:");
-            String CV = input.next();
+
         }
         if (memberType.equals("coordinator")) {
 
