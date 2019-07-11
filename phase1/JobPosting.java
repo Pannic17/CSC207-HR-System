@@ -1,4 +1,6 @@
 // TODO: in every for statement check if <= is required or <
+// TODO: Add a toString method that gives all the nexessary information about the posting
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ public class JobPosting {
     public ArrayList<Applicant> applicantList;
     public ArrayList<Applicant> hiredList;
 
-    public JobPosting(String title,String decription, String type, LocalDate postedDate, String requirements, LocalDate closeDate ){
+    public JobPosting(String title, String decription, String type, LocalDate postedDate, String requirements, LocalDate closeDate) {
         this.Title = title;
         this.Description = decription;
         this.Type = type;
@@ -24,15 +26,36 @@ public class JobPosting {
         this.hiredList = new ArrayList<>(hiredList);
     }
 
+    // Added by tejbeer
+    public String printForApplicant() {
+        return "Title: " + this.Title + "\n Type:" + this.Type + "\n Description: " + this.Description;
+    }
 
-//    Edited by tejbeer
-    public JobPosting getPosting(String title){
-        for (int i = 0; i<= JobApplicationSystem.Jobs.size(); i++){
+    // Added by tejbeer
+    public boolean checkApplicantHired(Applicant applicant) {
+        for (int i = 0; i < this.hiredList.size(); i++) {
+            if (this.hiredList.contains(applicant)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // added by tejbeer
+    public void viewAllPostings() {
+        for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {
+
+        }
+    }
+
+    //    Edited by tejbeer
+    public JobPosting getPosting(String title) {
+        for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {
             if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
                 return JobApplicationSystem.Jobs.get(i);
             }
         }
-//        TODO: if job posting is not found there should be prompt that asks for three options. Aslo do that in TextGUI class
+//        TODO: if job posting is not found there should be prompt that asks for three options. Create a new class JobPostingsPrompts that takes care of that
 //                      1. try again
 //                      2. go back (or so option)
 //                      3. exit
@@ -40,8 +63,8 @@ public class JobPosting {
         return null;
     }
 
-    public void setPosting(String title, String info, String newInfo){
-        for (int i = 0; i<= JobApplicationSystem.Jobs.size(); i++){
+    public void setPosting(String title, String info, String newInfo) {
+        for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {
             if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
                 if (info.equals("title")) {
                     JobApplicationSystem.Jobs.get(i).Title = newInfo;
@@ -59,33 +82,31 @@ public class JobPosting {
         }
     }
 
-    public void addPosting(String title,String decription, String type, LocalDate postedDate, String requirements, LocalDate closeDate ) {
+    public void addPosting(String title, String decription, String type, LocalDate postedDate, String requirements, LocalDate closeDate) {
         JobPosting newPosting = new JobPosting(title, decription, type, postedDate, requirements, closeDate);
         JobApplicationSystem.Jobs.add(newPosting);
     }
 
-    public void removePosting(String title){
-        for (int i = 0; i<= JobApplicationSystem.Jobs.size(); i++){
+    public void removePosting(String title) {
+        for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {
             if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
                 JobApplicationSystem.Jobs.remove(i);
             }
         }
     }
 
-    public String checkStatus(){
+    public String checkStatus() {
         if (positionFilled()) {
             return "Available";
-        }
-        else {
+        } else {
             return "Filled";
         }
     }
 
-    public boolean positionFilled(){
+    public boolean positionFilled() {
         if (hiredList == null) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

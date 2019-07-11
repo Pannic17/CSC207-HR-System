@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Applicant {
     public String Name;
+    public String password;
     public ArrayList<JobPosting> appliedTo;
     public ArrayList<JobPosting> allJobsAppliedTo;
 
@@ -10,6 +11,19 @@ public class Applicant {
         this.appliedTo = new ArrayList<>();
         this.allJobsAppliedTo = new ArrayList<>();
     }
+
+    public Applicant(String name, String password) {
+        this.Name = name;
+        this.password = password;
+        this.appliedTo = new ArrayList<>();
+        this.allJobsAppliedTo = new ArrayList<>();
+    }
+
+    public String toString() {
+        // TODO:return the username and any notification
+        return "";
+    }
+
 
     // TODO: Method added by Marko
     public JobPosting findPosting(String title) {
@@ -63,20 +77,53 @@ public class Applicant {
         }
     }
 
-    public void createApplicants() {
+    public static boolean applicantExist(String username) {
+        for (int i = 0; i < JobApplicationSystem.Applicants.size(); i++) {
+            if (JobApplicationSystem.Applicants.get(i).Name.equals(username)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void checkStatuses() {
+        // print out every job and its status next to it.
+        for (int i = 0; i < this.appliedTo.size(); i++) {
+            System.out.println(this.appliedTo.get(i).printForApplicant());
+            System.out.println("Job Status: "+this.getJobStatus(this.allJobsAppliedTo.get(i)));
+
+        }
+    }
+
+    public String getJobStatus(JobPosting job) {
+        // check if the postion has been filled
+        if (job.checkStatus().equals("Filled")) {
+            // if yes then check if this applicant is hired
+            if (job.checkApplicantHired(this)) {
+                return "Hired";
+            } else {
+                return "Not Hired";
+            }
+        } else {// if no then return applied
+            return "Applied";
+        }
+    }
+
+    public void getNotifiations() {
     }
 
     public ArrayList<JobPosting> getHistory() {
+        // TODO: need a prompt to print it
         return allJobsAppliedTo;
     }
 
     public void positionFilled() {
+        // TODO:
     }
 
     public void checkInterview() {
+
+
     }
 
 }
