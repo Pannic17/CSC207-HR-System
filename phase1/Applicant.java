@@ -15,6 +15,8 @@ public class Applicant {
         this.Name = name;
         this.appliedTo = new ArrayList<>();
         this.allJobsAppliedTo = new ArrayList<>();
+        this.cv = "";
+        this.coverLetter = "";
     }
 
     public Applicant(String name, String password) {
