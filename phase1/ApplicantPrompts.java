@@ -6,11 +6,11 @@ public class ApplicantPrompts {
     }
 
     public void createNewApplicantPrompt() {
-        System.out.println("To Create a new Applicant Account Plese enter a user name:");
+        System.out.println("To Create a new Applicant Account Please enter a user name:");
 
 //        learn password encryption for phase 2 and requirements for password
 //        Phase 2 will have a password class
-        System.out.println("To Create a new Applicant Account Plese enter a username:");
+        System.out.println("To Create a new Applicant Account Please enter a username:");
         Scanner in = new Scanner(System.in);
         String username = in.nextLine();
         if (!Applicant.applicantExist(username)) {
@@ -32,7 +32,7 @@ public class ApplicantPrompts {
     }
 
     public void applicantSignInPrompt() {
-        System.out.println("Plese enter a user name:");
+        System.out.println("Please enter a user name:");
         Scanner staffUsernameInput = new Scanner(System.in);
         String username = staffUsernameInput.nextLine();
         if (Applicant.applicantExist(username)) {
@@ -68,7 +68,7 @@ public class ApplicantPrompts {
         } else if (choice == 2) {
             JobPosting.viewAllPostings();
         } else if (choice == 3) {
-            System.out.println("Plese enter the name of the Job Posting");
+            System.out.println("Please enter the name of the Job Posting");
             Scanner in2 = new Scanner(System.in);
             String JobPostingName = in2.nextLine();
             JobPosting jobPosting = JobPosting.getPosting(JobPostingName);
