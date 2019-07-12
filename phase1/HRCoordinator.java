@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class hrCoordinator {
+public class HRCoordinator {
     public String name;
     public ArrayList<JobPosting> jobList;
     public ArrayList<Applicant> applicantList;
     public ArrayList<Interviewer> interviewerList;
     public Applicant choice;
 
-    public hrCoordinator(String name) {
+    public HRCoordinator(String name) {
         this.name = name;
     }
 
@@ -46,6 +46,14 @@ public class hrCoordinator {
         }
     }
 
+    public void sendInfo(){
+        Applicant applicant = selectApplicant(this.applicantList);
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter the message you want to send");
+        String info = scan.next();
+        applicant.messages.add(new InfoTuple(this, info));
+    }
+
     public JobPosting createJobPosting(String title){
         JobPosting job = new JobPosting(title);
         this.jobList.add(job);
@@ -56,8 +64,8 @@ public class hrCoordinator {
         jobList.remove(job);
     }
 
-    public hrCoordinator createHRCoodinator (String name){
-        return new hrCoordinator(name);
+    public HRCoordinator createHRCoodinator (String name){
+        return new HRCoordinator(name);
     }
 
     public boolean checkStatus(JobPosting job){
@@ -85,7 +93,7 @@ public class hrCoordinator {
 
     public void recommendApplicant (){
         JobPosting job = selectJob();
-        Applicant applicant = selectApplicant(job);
+        Applicant applicant = selectApplicant(job.applicantList);
         Interviewer interviewer = selectInterviwer();
         interviewer.recommendApplicant.add(applicant);
         interviewer.recommendJob.add(job);
@@ -111,12 +119,12 @@ public class hrCoordinator {
     }
 
 
-    private Applicant selectApplicant (JobPosting job){
+    private Applicant selectApplicant (ArrayList<Applicant> applicants){
         Scanner scan = new Scanner(System.in);
-        printApplicant(job);
+        printApplicant(applicants);
         System.out.println("Please enter the recommend applicant's name");
         String selectApplicant = scan.next();
-        for (Applicant applicant : job.applicantList){
+        for (Applicant applicant : applicants){
             if (applicant.Name.equals(selectApplicant)){
                 return applicant;
             }
@@ -124,9 +132,8 @@ public class hrCoordinator {
         throw new NoSuchElementException();
     }
 
-    private void printApplicant (JobPosting job){
-        System.out.println("Job "+job.Title+" has applicants");
-        for (Applicant applicant : job.applicantList){
+    private void printApplicant (ArrayList<Applicant> applicants){
+        for (Applicant applicant : applicants){
             System.out.println(applicant.Name);
         }
     }
@@ -147,6 +154,24 @@ public class hrCoordinator {
         for (JobPosting job : this.jobList){
             System.out.println(job);
         }
+    }
+}
+
+class InfoTuple {
+    HRCoordinator hr;
+    String info;
+
+    InfoTuple(HRCoordinator hr, String info){
+        this.hr = hr;
+        this.info = info;
+    }
+
+    String getHRName(){
+        return hr.name;
+    }
+
+    String getInfo(){
+        return info;
     }
 }
 

@@ -1,0 +1,31 @@
+Nicholas Pan
+implemented matchApplicants, recommendApplicant and sendInfo
+
+public class Interviewer {
+    public ArrayList<Applicant> recommendApplicant;
+    public ArrayList<JobPosting> recommendJob;
+    public String name;
+    public ArrayList<Applicant> phoneInterview;
+    public ArrayList<Applicant> inPersonInterview;
+}
+
+public class JobPosting {
+    public String Title;
+    public ArrayList<Applicant> applicantList;
+    public ArrayList hiredList;
+    public boolean available;
+
+    public JobPosting(String title){
+        this.Title = title;
+        this.available = true;
+    }
+}
+
+public class Applicant {
+    public String Name;
+    public ArrayList<JobPosting> appliedTo;
+    public ArrayList<JobPosting> allJobsAppliedTo;
+    public ArrayList<Interviewer> phoneInterview;
+    public ArrayList<Interviewer> inPersonInterview;
+    public ArrayList<InfoTuple> messages;
+}
