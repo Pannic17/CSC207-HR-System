@@ -62,7 +62,7 @@ public class Applicant {
         Scanner scan = new Scanner(System.in);
         System.out.println("Submit your document by copying the text and pasting here.");
         String doc = scan.nextLine();
-        StringBuilder lines = new StringBuilder;
+        StringBuilder lines = new StringBuilder();
         int i = 0;
         while (i < doc.length())
         {
