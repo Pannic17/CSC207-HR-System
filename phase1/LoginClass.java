@@ -11,7 +11,7 @@ public class LoginClass {
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
         if (choice == 1) {
-            createLoginFiles(); // if already exits then does nothing
+
             System.out.println("Please select one of the options below:" + "\n1. Applicant" + "\n2. Interviewer" + "\n3. HR Coordinator" + "\n4. Back");
             Scanner loginTypeInput = new Scanner(System.in);
             int type = loginTypeInput.nextInt();
@@ -41,11 +41,7 @@ public class LoginClass {
         }
     }
 
-    public void createLoginFiles() {
-        createTextFile("ApplicantLoginFile");
-        createTextFile("InterviewerLoginFile");
-        createTextFile("HRLoginFile");
-    }
+
 
 
     public void createNewUser() {
@@ -79,7 +75,7 @@ public class LoginClass {
 
     public void applicantLogin() {
         ApplicantPrompts ap = new ApplicantPrompts();
-
+        ap.applicantSignInPrompt();
 
     }
 
@@ -98,10 +94,6 @@ public class LoginClass {
     public void createNewInterviewer() {
     }
 
-    public static void createTextFile(String filename) {
-        File file = new File(filename + ".txt");
-
-    }
 
 
 
