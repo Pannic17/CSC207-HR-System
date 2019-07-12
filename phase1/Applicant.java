@@ -94,6 +94,14 @@ public class Applicant {
         this.cv = "";
     }
 
+    private void updateDocuments()
+    {
+        System.out.println("Please submit your CV first.");
+        this.setCV();
+        System.out.println("Your application is almost complete. Please submit cover letter next.");
+        this.setCoverLetter();
+    }
+
     //TODO: send the CV when applying
 
     public void applyToPosting(JobPosting posting) {
@@ -104,8 +112,7 @@ public class Applicant {
                 this.allJobsAppliedTo.add(JobApplicationSystem.Jobs.get(i));
                 if (cv.isEmpty())
                 {
-                    this.setCV();
-                    this.setCoverLetter();
+                    this.updateDocuments();
                 }
                 System.out.println("Applied");
             } else {
