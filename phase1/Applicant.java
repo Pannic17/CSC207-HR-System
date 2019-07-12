@@ -1,10 +1,15 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
 
 public class Applicant {
     public String Name;
     public String password;
     public ArrayList<JobPosting> appliedTo;
     public ArrayList<JobPosting> allJobsAppliedTo;
+    String cv;
+    String coverLetter;
 
     public Applicant(String name) {
         this.Name = name;
@@ -36,6 +41,75 @@ public class Applicant {
         return null;
     }
 
+    // Added by leila
+    public String getCV() {
+        return this.cv;
+    }
+
+    // Added by leila
+    public void setCV() {
+        this.cv = this.submitDocuments();
+    }
+
+    // Added by leila
+    public String getCoverLetter() {
+        return this.coverLetter;
+    }
+
+    // Added by leila
+    public void setCoverLetter() {
+        this.coverLetter = this.submitDocuments();
+    }
+
+    // Added by leila
+    private String submitDocuments()
+    {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Submit your document by copying the text and pasting here.");
+        String doc = scan.nextLine();
+        StringBuilder lines = new StringBuilder();
+        int i = 0;
+        while (i < doc.length())
+        {
+            int endIndex = Math.min(i + 70, doc.length());
+            lines.append(doc.substring(i, endIndex));
+            lines.append('\n');
+            i = endIndex;
+        }
+
+        return lines.toString();
+    }
+
+    // Added by leila
+    public void resubmissionCheck()
+    {
+        int lastApplication = appliedTo.size() - 1;
+        LocalDate closed = appliedTo.get(lastApplication).CloseDate;
+        long dayDifference = ChronoUnit.DAYS.between(LocalDate.now(), closed);
+        int dayDiff = ((int) dayDifference);
+        if (dayDiff >= 30)
+        {
+            this.deleteDocuments();
+            System.out.println("No CV or cover letter on file. Please resubmit next time you apply.");
+        }
+    }
+
+    // Added by leila
+    private void deleteDocuments()
+    {
+        this.coverLetter = "";
+        this.cv = "";
+    }
+
+    // Added by leila
+    private void updateDocuments()
+    {
+        System.out.println("Please submit your CV first.");
+        this.setCV();
+        System.out.println("Your application is almost complete. Please submit cover letter next.");
+        this.setCoverLetter();
+    }
+
     //TODO: send the CV when applying
 
     public void applyToPosting(JobPosting posting) {
@@ -44,6 +118,11 @@ public class Applicant {
                 JobApplicationSystem.Jobs.get(i).applicantList.add(this);
                 this.appliedTo.add(JobApplicationSystem.Jobs.get(i));
                 this.allJobsAppliedTo.add(JobApplicationSystem.Jobs.get(i));
+                // Edited by leila
+                if (cv.isEmpty())
+                {
+                    this.updateDocuments();
+                }
                 System.out.println("Applied");
             } else {
                 System.out.println("Doesn't contain this job");
