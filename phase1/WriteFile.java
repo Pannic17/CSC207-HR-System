@@ -22,7 +22,7 @@ public class WriteFile {
     }
 
 
-    public void bufferedWriteToFile(File file, String content) throws IOException {
+    public static void bufferedWriteToFile(File file, String content) throws IOException {
 
         try{
         // file writer takes care of opening the correct file and storing the text as bytes

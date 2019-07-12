@@ -21,7 +21,8 @@ public class ApplicantPrompts {
             System.out.println("A new Applicant account has been created");
             System.out.println(applicant);
             JobApplicationSystem.Applicants.add(applicant);
-            //
+//TODO"            WriteFile.bufferedWriteToFile(, "");
+
             applicantOptionsPrompt(applicant);
         } else {
             System.out.println("This username already exists please choose a different username:");
