@@ -2,11 +2,11 @@
 import java.io.*;
 
 
-public class WriteFile {
+public class WriteFile{
     private String path;
 
 
-    public WriteFile(String filePath) {
+    public WriteFile(String filePath)  {
         path = filePath;
     }
 
@@ -22,7 +22,8 @@ public class WriteFile {
     }
 
 
-    public void bufferedWriteToFile(File file, String content) throws IOException {
+    public static void bufferedWriteToFile(String fileName, String content) throws IOException {
+        File file = createTextFile(fileName);
 
         try{
         // file writer takes care of opening the correct file and storing the text as bytes
@@ -33,16 +34,22 @@ public class WriteFile {
 
         bufferedWriter.append(content);
         bufferedWriter.close();
-        }catch (Exception e){
+        }catch (java.io.IOException e){
+            e.printStackTrace();
             System.out.println(e);
+        }catch (java.io.IOError e){
+            System.out.println("IOException: "+e);
+        }catch (SecurityException s){
+            System.out.println("Security Exception:"+s);
         }
+
 
     }
 
 
-    public static void createTextFile(String filename) {
+    public static File  createTextFile(String filename) {
         File file = new File(filename + ".txt");
-
+        return file;
     }
 
     public static void createCSVFile(String filename) {

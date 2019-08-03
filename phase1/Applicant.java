@@ -15,6 +15,8 @@ public class Applicant {
         this.Name = name;
         this.appliedTo = new ArrayList<>();
         this.allJobsAppliedTo = new ArrayList<>();
+        this.cv = "";
+        this.coverLetter = "";
     }
 
     public Applicant(String name, String password) {
@@ -31,7 +33,7 @@ public class Applicant {
 
 
     // TODO: Method added by Marko
-    // edited by tejbeer (made it static)
+//     Doesn't need to be initialized
     public static JobPosting findPosting(String title) {
         for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {    //TODO: check if <= is required or =
             if (JobApplicationSystem.Jobs.get(i).Title.equals(title)) {
@@ -41,31 +43,35 @@ public class Applicant {
         return null;
     }
 
+    // Added by leila
     public String getCV() {
         return this.cv;
     }
 
+    // Added by leila
     public void setCV() {
         this.cv = this.submitDocuments();
     }
 
+    // Added by leila
     public String getCoverLetter() {
         return this.coverLetter;
     }
 
+    // Added by leila
     public void setCoverLetter() {
         this.coverLetter = this.submitDocuments();
     }
 
-    private String submitDocuments()
-    {
+    // Added by leila
+//     Doesn't need to be initialized
+    private String submitDocuments() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Submit your document by copying the text and pasting here.");
         String doc = scan.nextLine();
         StringBuilder lines = new StringBuilder();
         int i = 0;
-        while (i < doc.length())
-        {
+        while (i < doc.length()) {
             int endIndex = Math.min(i + 70, doc.length());
             lines.append(doc.substring(i, endIndex));
             lines.append('\n');
@@ -75,34 +81,33 @@ public class Applicant {
         return lines.toString();
     }
 
-    public void resubmissionCheck()
-    {
+    // Added by leila
+    public void resubmissionCheck() {
         int lastApplication = appliedTo.size() - 1;
         LocalDate closed = appliedTo.get(lastApplication).CloseDate;
         long dayDifference = ChronoUnit.DAYS.between(LocalDate.now(), closed);
         int dayDiff = ((int) dayDifference);
-        if (dayDiff >= 30)
-        {
+        if (dayDiff >= 30) {
             this.deleteDocuments();
             System.out.println("No CV or cover letter on file. Please resubmit next time you apply.");
         }
     }
 
-    private void deleteDocuments()
-    {
+    // Added by leila
+    private void deleteDocuments() {
         this.coverLetter = "";
         this.cv = "";
     }
 
-    private void updateDocuments()
-    {
+    // Added by leila
+    private void updateDocuments() {
         System.out.println("Please submit your CV first.");
         this.setCV();
         System.out.println("Your application is almost complete. Please submit cover letter next.");
         this.setCoverLetter();
     }
 
-    //TODO: send the CV when applying
+
 
     public void applyToPosting(JobPosting posting) {
         for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++) {
@@ -110,8 +115,8 @@ public class Applicant {
                 JobApplicationSystem.Jobs.get(i).applicantList.add(this);
                 this.appliedTo.add(JobApplicationSystem.Jobs.get(i));
                 this.allJobsAppliedTo.add(JobApplicationSystem.Jobs.get(i));
-                if (cv.isEmpty())
-                {
+                // Edited by leila
+                if (cv.isEmpty()) {
                     this.updateDocuments();
                 }
                 System.out.println("Applied");
@@ -147,7 +152,7 @@ public class Applicant {
             }
         }
     }
-
+    //     Doesn't need to be initialized
     public static boolean applicantExist(String username) {
         for (int i = 0; i < JobApplicationSystem.Applicants.size(); i++) {
             if (JobApplicationSystem.Applicants.get(i).Name.equals(username)) {
@@ -161,9 +166,21 @@ public class Applicant {
         // print out every job and its status next to it.
         for (int i = 0; i < this.appliedTo.size(); i++) {
             System.out.println(this.appliedTo.get(i).printForApplicant());
-            System.out.println("Job Status: "+this.getJobStatus(this.allJobsAppliedTo.get(i))+"\n");
+            System.out.println("Job Status: " + this.getJobStatus(this.allJobsAppliedTo.get(i)) + "\n");
 
         }
+    }
+
+    // doesn't need to be initialized
+    public static boolean checkPasswordMatch(String username, String Password) {
+//        read the file and check if the username exists -- Already checked
+        // get the file as a string
+        String str = new String();
+        ReadFile rf = new ReadFile();
+        str = rf.returnIt(JobApplicationSystem.applicantFileName);
+        // check if the username and password match
+        CharSequence charSequence = Password;
+        return str.contains(charSequence);
     }
 
     public String getJobStatus(JobPosting job) {
@@ -179,7 +196,8 @@ public class Applicant {
             return "Applied";
         }
     }
-//  TODO: implement notifcation interface
+
+    //  TODO: implement notifcation interface
     public void getNotifiations() {
 
     }

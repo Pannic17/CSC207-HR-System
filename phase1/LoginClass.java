@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class LoginClass {
@@ -10,7 +11,7 @@ public class LoginClass {
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
         if (choice == 1) {
-            createLoginFiles();
+
             System.out.println("Please select one of the options below:" + "\n1. Applicant" + "\n2. Interviewer" + "\n3. HR Coordinator" + "\n4. Back");
             Scanner loginTypeInput = new Scanner(System.in);
             int type = loginTypeInput.nextInt();
@@ -40,11 +41,7 @@ public class LoginClass {
         }
     }
 
-    public void createLoginFiles() {
-        WriteFile.createTextFile("ApplicantLoginFile");
-        WriteFile.createTextFile("InterviewerLoginFile");
-        WriteFile.createTextFile("HRLoginFile");
-    }
+
 
 
     public void createNewUser() {
@@ -78,7 +75,7 @@ public class LoginClass {
 
     public void applicantLogin() {
         ApplicantPrompts ap = new ApplicantPrompts();
-
+        ap.applicantSignInPrompt();
 
     }
 
@@ -96,6 +93,8 @@ public class LoginClass {
 
     public void createNewInterviewer() {
     }
+
+
 
 
 }
