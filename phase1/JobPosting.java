@@ -14,8 +14,10 @@ public class JobPosting {
     public LocalDate CloseDate;
     public ArrayList<Applicant> applicantList;
     public ArrayList<Applicant> hiredList;
+    ArrayList<String> tags;
 
-    public JobPosting(String title, String decription, String type, LocalDate postedDate, String requirements, LocalDate closeDate) {
+    public JobPosting(String title, String decription, String type, LocalDate postedDate,
+                      String requirements, LocalDate closeDate, String firstTag) {
         this.Title = title;
         this.Description = decription;
         this.Type = type;
@@ -23,7 +25,9 @@ public class JobPosting {
         this.Requirements = requirements;
         this.CloseDate = closeDate;
         this.applicantList = new ArrayList<>();
-        this.hiredList = new ArrayList<>(hiredList);
+        this.hiredList = new ArrayList<>();
+        this.tags = new ArrayList<>();
+        this.tags.add(firstTag);
     }
 
     // Added by tejbeer
@@ -35,6 +39,11 @@ public class JobPosting {
     public String toString(){
         return "Title: " + this.Title + "\n Type:" + this.Type + "\n Description: " + this.Description+"\n Requirements"+this.Requirements+
                 "\n PostedDate:"+this.PostedDate+"\n CloseDate:"+this.CloseDate+"\n Status:"+ this.checkStatus();
+    }
+
+    void addTag(String newTag)
+    {
+        this.tags.add(newTag);
     }
 
     // Added by tejbeer
