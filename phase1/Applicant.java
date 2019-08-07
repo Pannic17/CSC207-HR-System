@@ -43,6 +43,19 @@ public class Applicant {
         return null;
     }
 
+    ArrayList<JobPosting> filterJobs(String tag)
+    {
+        ArrayList <JobPosting> filtered = new ArrayList<>();
+        for (int i = 0; i <= JobApplicationSystem.Jobs.size(); i++)
+        {
+            if (JobApplicationSystem.Jobs.get(i).tags.contains(tag))
+            {
+                filtered.add(JobApplicationSystem.Jobs.get(i));
+            }
+        }
+        return filtered;
+    }
+
     // Added by leila
     public String getCV() {
         return this.cv;
