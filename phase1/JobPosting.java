@@ -97,8 +97,9 @@ public class JobPosting {
         }
     }
 
-    public void addPosting(String title, String decription, String type, LocalDate postedDate, String requirements, LocalDate closeDate) {
-        JobPosting newPosting = new JobPosting(title, decription, type, postedDate, requirements, closeDate);
+    public void addPosting(String title, String decription, String type, LocalDate postedDate, String requirements,
+                           LocalDate closeDate, String firstTag) {
+        JobPosting newPosting = new JobPosting(title, decription, type, postedDate, requirements, closeDate, firstTag);
         JobApplicationSystem.Jobs.add(newPosting);
     }
 
