@@ -106,7 +106,7 @@ public class ApplicantGUI {
                 infoPane.setVisible(true);
                 JobApplicationSystem jbs = new JobApplicationSystem();
                 for (JobPosting job : jbs.getJobPostingList().values()) {
-                    model.addElement(job.status);
+                    model.addElement(job.jobType);
                     infoList.setModel(model);
                 }
             }
@@ -121,13 +121,17 @@ public class ApplicantGUI {
                 clearInfo();
                 infoText.setVisible(false);
                 infoPane.setVisible(true);
-                Applicant applicant = applicantMethods.getApplicant(selectedJob);
                 ArrayList<String> arrayList = applicantMethods.jobpostingArraytoString(applicant.jobsAppliedTo);
+                ArrayList<JobPosting> jobs = applicant.jobsAppliedTo;
                 if (arrayList.size() < 1) {
                     infoLabel.setText("The applicant has not applied for a job yet");
                 } else {
                     for (String applies : arrayList) {
                         infoLabel.setText(applies + "\n");
+                    }
+                    for (JobPosting job: jobs){
+                        model.addElement(job.jobType);
+                        infoList.setModel(model);
                     }
                 }
             }
@@ -147,6 +151,7 @@ public class ApplicantGUI {
                 }
                 JobPosting job = jobPostingMethods.getPosting(selectedJob);
                 job.apply(applicant);
+                FileWriter.writeToFile(applicant);
                 infoLabel.setText("Successfully Applied");
             }
         });
@@ -165,6 +170,8 @@ public class ApplicantGUI {
                 }
                 JobPosting job = jobPostingMethods.getPosting(selectedJob);
                 job.withdraw(applicant);
+                applicant.jobsAppliedTo.remove(job);
+                FileWriter.writeToFile(applicant);
                 infoLabel.setText("Successfully Withdrew");
             }
         });
