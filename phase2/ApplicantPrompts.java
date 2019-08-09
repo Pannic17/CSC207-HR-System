@@ -100,6 +100,7 @@ public class ApplicantPrompts implements Serializable {
 //        TODO:View own documents like CV and Cover Letter
         ApplicantHelperMethods applicantMethods = new ApplicantHelperMethods();
         JobPostingHelperMethods jobPostingMethods = new JobPostingHelperMethods();
+        JobApplicationSystem jbs = new JobApplicationSystem();
         System.out.println("Please select one of the options below:" +
                 "\n1. View status" +
                 "\n2. View Job Postings" +
@@ -117,7 +118,6 @@ public class ApplicantPrompts implements Serializable {
                 break;
             case 2:
                 jobPostingMethods.viewAllPostings();
-                applicantOptionsPrompt(applicant);
                 break;
             case 3:
                 System.out.println("Please enter the name of the Job Posting");
@@ -129,6 +129,7 @@ public class ApplicantPrompts implements Serializable {
                 applicantOptionsPrompt(applicant);
                 break;
             case 4:
+                System.out.println(jbs.getJobPostingList().values());
                 System.out.println("Please enter the name of the Job Posting");
                 Scanner getName = new Scanner(System.in);
                 String name = getName.nextLine();
@@ -144,11 +145,11 @@ public class ApplicantPrompts implements Serializable {
                 JobPosting jobToWithdraw = jobPostingMethods.getPosting(name2);
                 Boolean withdrawn = jobToWithdraw.withdraw(applicant);
                 System.out.println(withdrawn);// TODO: remove after changing type
-                applicantOptionsPrompt(applicant);
+
                 break;
             case 6:
                 applicant.getHistory();
-                applicantOptionsPrompt(applicant);
+
                 break;
             case 7:
                 LoginClass lg = new LoginClass();
@@ -158,6 +159,7 @@ public class ApplicantPrompts implements Serializable {
                 System.out.println("Please choose one of the above options.");
                 applicantOptionsPrompt(applicant);
         }
+        applicantOptionsPrompt(applicant);
     }
 
 
