@@ -1,11 +1,8 @@
-import com.sun.xml.internal.bind.v2.TODO;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Scanner;
 
 public class LoginGUI {
     JPanel panel;
