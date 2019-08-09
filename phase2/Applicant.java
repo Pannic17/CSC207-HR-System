@@ -34,11 +34,11 @@ public class Applicant implements Serializable {
     }
 
     public Applicant(String Username, String Password, String Name) {
-
+        JobApplicationSystem jbs = new JobApplicationSystem();
         this.username = Username;
         this.password = Password;
         this.name = Name;
-        this.dateCreated = JobApplicationSystem.today;
+        this.dateCreated = jbs.today;
         this.coverLetter = new CoverLetter();
         this.cv = new CV();
         this.jobsAppliedTo = new ArrayList<JobPosting>();
@@ -94,7 +94,7 @@ public class Applicant implements Serializable {
     public void getHistory() {
         JobPostingHelperMethods methods = new JobPostingHelperMethods();
         // return date account created
-        System.out.println("Date Account Created" + this.dateCreated);
+        System.out.println("Date Account Created: " + this.dateCreated);
         // jobs applied to in the past
         System.out.println("Jobs Currently Applied to:" + methods.jobpostingArraytoString(this.jobsAppliedTo));
         System.out.println("Jobs ever Applied to: " + methods.jobpostingArraytoString(this.jobsEverAppliedTo));
@@ -106,15 +106,6 @@ public class Applicant implements Serializable {
 
 
     }
-
-    public boolean Passed30days() {
-        if (JobApplicationSystem.today.minusDays(30).isAfter(this.dateSinceLastApplicationClosed)) {
-            return true;
-        }
-//        TODO: Should notify the applicant that he/she needs to upload their docs again
-        return false;
-    }
-
     String getHistoryGUI(){
         JobPostingHelperMethods methods = new JobPostingHelperMethods();
         String history = ("Date Account Created" + this.dateCreated + "\n" +
@@ -126,6 +117,16 @@ public class Applicant implements Serializable {
             history += ("Date Since Last Application Closed: You have never applied for a Job");
         }
         return history;
+    }
+
+
+    public boolean Passed30days() {
+        JobApplicationSystem jbs = new JobApplicationSystem();
+        if (jbs.today.minusDays(30).isAfter(this.dateSinceLastApplicationClosed)) {
+            return true;
+        }
+//        TODO: Should notify the applicant that he/she needs to upload their docs again
+        return false;
     }
 
 
