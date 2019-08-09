@@ -15,7 +15,7 @@ public class ApplicantHelperMethods extends Helpers implements Serializable {
         ArrayList<Applicant> list = new ArrayList<>();
         for (Map.Entry<String, Applicant> currentApplicant : hmap.entrySet()) {
             Applicant applicant = currentApplicant.getValue();
-            if (applicant.username.equals(applicantName) | applicant.name.equals(applicantName)) {
+            if (applicant.username.equals(applicantName) ||  applicant.name.equals(applicantName)) {
                 list.add(applicant);
             }
         }
@@ -93,7 +93,7 @@ public class ApplicantHelperMethods extends Helpers implements Serializable {
         // should print the type of job posting and the company of hiring and the status
         String toreturn = "";
         if (applicant.jobsAppliedTo.size() < 1) {
-            return "Cuurently you have not applied to any Job.";
+            return "Currently you have not applied to any Job.";
         }
 
 
