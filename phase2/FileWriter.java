@@ -19,7 +19,7 @@ public class FileWriter implements Serializable {
         hmap.put(applicant.username, applicant);
         try {
 
-            FileOutputStream fos = new FileOutputStream(JobApplicationSystem.applicantFileName + ".ser");
+            FileOutputStream fos = new FileOutputStream(jbs.applicantFileName + ".ser");
             OutputStream buffer = new BufferedOutputStream(fos);
             ObjectOutputStream oos = new ObjectOutputStream(buffer);
             oos.writeObject(hmap);
@@ -39,7 +39,7 @@ public class FileWriter implements Serializable {
 
         try {
 
-            FileOutputStream fos = new FileOutputStream(JobApplicationSystem.interviewerFileName + ".ser");
+            FileOutputStream fos = new FileOutputStream(jbs.interviewerFileName + ".ser");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(hmap);
             oos.close();
@@ -56,7 +56,7 @@ public class FileWriter implements Serializable {
         hmap.put(hrCoordinator.username, hrCoordinator);
 
         try {
-            FileOutputStream fos = new FileOutputStream(JobApplicationSystem.HrFileName + ".ser");
+            FileOutputStream fos = new FileOutputStream(jbs.HrFileName + ".ser");
             OutputStream buffer = new BufferedOutputStream(fos);
             ObjectOutputStream oos = new ObjectOutputStream(buffer);
             oos.writeObject(hmap);
@@ -75,9 +75,8 @@ public class FileWriter implements Serializable {
         HashMap<Integer, JobPosting> hmap = jbs.getJobPostingList();
         hmap.put(job.jobId, job);
 
-
         try {
-            FileOutputStream fos = new FileOutputStream(JobApplicationSystem.jobPostingFileName + ".ser");
+            FileOutputStream fos = new FileOutputStream(jbs.jobPostingFileName + ".ser");
             OutputStream buffer = new BufferedOutputStream(fos);
             ObjectOutputStream oos = new ObjectOutputStream(buffer);
             oos.writeObject(hmap);
@@ -93,7 +92,8 @@ public class FileWriter implements Serializable {
     public static void firstWriteToFile(Applicant applicant) {
         HashMap<String, Applicant> hmap = new HashMap<String, Applicant>();
         hmap.put(applicant.username, applicant);
-        File file = new File(JobApplicationSystem.applicantFileName + ".ser");
+        JobApplicationSystem jbs = new JobApplicationSystem();
+        File file = new File(jbs.applicantFileName + ".ser");
         try {
 
             FileOutputStream fos = new FileOutputStream(file.getName());
@@ -111,7 +111,8 @@ public class FileWriter implements Serializable {
     public static void firstWriteToFile(Interviewer interviewer) {
         HashMap<String, Interviewer> hmap = new HashMap<String, Interviewer>();
         hmap.put(interviewer.username, interviewer);
-        File file = new File(JobApplicationSystem.interviewerFileName + ".ser");
+        JobApplicationSystem jbs = new JobApplicationSystem();
+        File file = new File(jbs.interviewerFileName + ".ser");
         try {
             FileOutputStream fos = new FileOutputStream(file.getName());
             OutputStream buffer = new BufferedOutputStream(fos);
@@ -129,7 +130,8 @@ public class FileWriter implements Serializable {
     public static void firstWriteToFile(HRCoordinator hrCoordinator) {
         HashMap<String, HRCoordinator> hmap = new HashMap<String, HRCoordinator>();
         hmap.put(hrCoordinator.username, hrCoordinator);
-        File file = new File(JobApplicationSystem.HrFileName + ".ser");
+        JobApplicationSystem jbs = new JobApplicationSystem();
+        File file = new File(jbs.HrFileName + ".ser");
         try {
             FileOutputStream fos = new FileOutputStream(file.getName());
             OutputStream buffer = new BufferedOutputStream(fos);
@@ -147,7 +149,8 @@ public class FileWriter implements Serializable {
     public static void firstWriteToFile(JobPosting job) {
         HashMap<Integer, JobPosting> hmap = new HashMap<Integer, JobPosting>();
         hmap.put(job.jobId, job);
-        File file = new File(JobApplicationSystem.jobPostingFileName + ".ser");
+        JobApplicationSystem jbs = new JobApplicationSystem();
+        File file = new File(jbs.jobPostingFileName + ".ser");
         try {
             FileOutputStream fos = new FileOutputStream(file.getName());
             OutputStream buffer = new BufferedOutputStream(fos);

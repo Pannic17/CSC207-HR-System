@@ -29,7 +29,7 @@ public class HRPrompts implements Serializable {
 
             HRCoordinator hrCoordinator = new HRCoordinator(username, password, name, CompanyName);
             //tell the user that he account has been created
-            System.out.println("A new Applicant account has been created");
+            System.out.println("A new HR account has been created");
             System.out.println(hrCoordinator);
 
             FileWriter.writeToFile(hrCoordinator);
@@ -40,8 +40,10 @@ public class HRPrompts implements Serializable {
         }
     }
 
+
     public void hrOptionsPrompts(HRCoordinator hrCoordinator) {
-//        TODO:View own documents like CV and Cover Letter
+
+        System.out.println("\n"+hrCoordinator);
         ApplicantHelperMethods applicantMethods = new ApplicantHelperMethods();
         JobPostingHelperMethods jobPostingMethods = new JobPostingHelperMethods();
         InterviewerHelperMethods interviewerMethods = new InterviewerHelperMethods();
@@ -51,11 +53,12 @@ public class HRPrompts implements Serializable {
                 "\n2. View jobs applied by the applicant" +
                 "\n3. Get a list of Interviewers" +
                 "\n4. Get List of Applicants" +
-                "\n5. Assign Job to Interviewer" +
-                "\n6. Match Applicant with interviewer" +
+                "\n5. Assign Job to interviewer" +
+                "\n6. Assign Applicant to Interviewer" +
                 "\n7. Create a new Job Posting" +
                 "\n8. Get Results from interviewer" +
-                "\n9. SignOut");
+                "\n9. View All Job Postings" +
+                "\n10. SignOut");
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();
         switch (choice) {
@@ -71,38 +74,27 @@ public class HRPrompts implements Serializable {
             case 4:
                 System.out.println(jbs.getApplicantList().values());
                 break;
-            case 5:
-                System.out.println(jbs.getInterviewerList().values());
-                System.out.println("Please enter the name of the Interviewer");
-                Scanner getName2 = new Scanner(System.in);
-                String interviewerName = getName2.nextLine();
-                Interviewer interviewer = interviewerMethods.getInterviewerWithName(interviewerName);
-                System.out.println("Please enter the name of the Job Posting");
-                Scanner getName = new Scanner(System.in);
-                String postingName = getName.nextLine();
-                JobPosting posting = jobPostingMethods.getPosting(postingName);
-                interviewer.assignJob(posting);
-                break;
             case 6:
-                System.out.println("Please enter the name of the Interviewer");
-                Scanner getName3 = new Scanner(System.in);
-                String interviewerName2 = getName3.nextLine();
-                Interviewer interviewer2 = interviewerMethods.getInterviewerWithName(interviewerName2);
-                // print the list of applicants in the applicant status
-                interviewer2.assignApplicantToInteviewer();
+                Option5();
+                break;
+            case 5:
+                Option6();
                 break;
             case 7:
-                createJobPostingPrompt();
+                createJobPostingPrompts(hrCoordinator);
                 break;
             case 8:
                 System.out.println(jbs.getInterviewerList().values());
                 getResultsFromInterviewerPrompt(hrCoordinator);
                 break;
             case 9:
+                JobPostingHelperMethods jbhm = new JobPostingHelperMethods();
+                jbhm.viewAllPostings();
+                break;
+            case 10:
                 LoginClass lg = new LoginClass();
                 lg.startingPrompt2();
                 break;
-
             default:
                 System.out.println("Please choose one of the above options.");
                 hrOptionsPrompts(hrCoordinator);
@@ -135,14 +127,74 @@ public class HRPrompts implements Serializable {
         String name2 = in3.nextLine();
         Applicant applicant2 = applicantMethods.getApplicant(name2);
         if (applicant2 != null) {
-            ArrayList<String> arrayList = applicantMethods.jobpostingArraytoString(hrCoordinator.applicantJobsAppliedInCompany(applicant2));
-            if (arrayList.size() < 1) {
+            ArrayList<String> arrayList = applicantMethods.jobpostingArraytoString(applicant2.jobsAppliedTo);
+            if (arrayList.size() == 0) {
                 System.out.println("The applicant has not applied for a job yet");
             } else {
                 System.out.println(arrayList);
             }
         } else {
             System.out.println("Applicant with this name Doesn't exist");
+            return;
+        }
+    }
+
+    public void Option5() {
+        JobApplicationSystem jbs = new JobApplicationSystem();
+        ApplicantHelperMethods applicantMethods = new ApplicantHelperMethods();
+        InterviewerHelperMethods interviewerMethods = new InterviewerHelperMethods();
+        System.out.println(jbs.getApplicantList().values());
+        System.out.println("Please enter the name of the Applicant To view  his/her Documents");
+        Scanner in2 = new Scanner(System.in);
+        String name = in2.nextLine();
+        Applicant applicant = applicantMethods.getApplicant(name);
+        if (applicant != null) {
+            System.out.println(jbs.getInterviewerList().values());
+            System.out.println("Please enter the name of the Interviewer");
+            Scanner getName2 = new Scanner(System.in);
+            String interviewerName = getName2.nextLine();
+            Interviewer interviewer = interviewerMethods.getInterviewerWithName(interviewerName);
+            if (interviewer != null) {
+
+                interviewerMethods.assignApplicantToInteviewer(interviewer);
+            } else {
+                System.out.println("Interviewer with this name doesn't exist");
+                return;
+            }
+        } else {
+            System.out.println("Applicant with this name Doesn't exist");
+            return;
+        }
+
+    }
+
+
+    public void Option6() {
+        // Assign interview pool to Interviewer
+        JobApplicationSystem jbs = new JobApplicationSystem();
+        ApplicantHelperMethods applicantMethods = new ApplicantHelperMethods();
+        InterviewerHelperMethods interviewerMethods = new InterviewerHelperMethods();
+        JobPostingHelperMethods jphm = new JobPostingHelperMethods();
+        System.out.println(jbs.getInterviewerList().values());
+        System.out.println("Please enter the name of the Interviewer");
+        Scanner getName2 = new Scanner(System.in);
+        String interviewerName = getName2.nextLine();
+        Interviewer interviewer = interviewerMethods.getInterviewerWithName(interviewerName);
+        if (interviewer != null) {
+            System.out.println(jbs.getJobPostingList());
+            System.out.println("Please enter the name of the job to Assign to " + interviewer.name);
+            Scanner in = new Scanner(System.in);
+            String jobName = in.nextLine();
+            JobPosting job = jphm.getPosting(jobName);
+            if (job != null) {
+                interviewer.assignJob(job);
+                System.out.println(interviewerName+" has been assigned the job "+ jobName);
+            } else {
+                System.out.println("Job Posting With this name doesn't exist");
+            }
+
+        } else {
+            System.out.println("Interviewer with this name doesn't exist");
             return;
         }
     }
@@ -201,7 +253,7 @@ public class HRPrompts implements Serializable {
     }
 
     public void createJobPostingPrompts(HRCoordinator hrCoordinator) {
-        System.out.println("Please enter the Job idText (a unique integer combination):");
+        System.out.println("Please enter the Job ID (a unique integer combination):");
         Scanner getid = new Scanner(System.in);
         int id = getid.nextInt();
         System.out.println("Please enter the Title of the Job");
@@ -213,9 +265,10 @@ public class HRPrompts implements Serializable {
         System.out.println("Please enter the Date of closing (Format: YYYY-MM-DD)");
         Scanner getClosingDate = new Scanner(System.in);
         String closingDate = getClosingDate.nextLine();
-        LocalDate date = LocalDate.parse(closingDate);
+        LocalDate date = LocalDate.parse(closingDate); // TODO: take care of exceptions
         ArrayList requirements = getRequirementsPrompt();
         JobPosting job = new JobPosting(id, title, companyName, date, requirements);
+        System.out.println("New Job Post Created");
 
     }
 
@@ -276,50 +329,4 @@ public class HRPrompts implements Serializable {
                 tryAgainPrompt2(hr);
         }
     }
-
-    LocalDate getCloseDate (int year, int month, int day){
-        LocalDate date = LocalDate.of(year,month,day);
-        return date;
-    }
-
-    void addRequirements (JobPosting job, String requirement){
-        job.requirementsList.add(requirement);
-    }
-
-    JobPosting createJobPosting (int id, String jobType, String hiringCompany, LocalDate dateOfClosing){
-        ArrayList<String> requirements = new ArrayList<>();
-        return new JobPosting(id, jobType, hiringCompany, dateOfClosing,requirements);
-    }
-
-    void createJobPostingPrompt (){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Please enter job posting idText");
-        int id = in.nextInt();
-        System.out.println("Please enter job type");
-        String jobType = in.next();
-        System.out.println("Please enter Company offering the job");
-        String company = in.next();
-        System.out.println("Please enter closing year");
-        int year = in.nextInt();
-        System.out.println("Please enter closing month");
-        int month = in.nextInt();
-        System.out.println("Please enter closing day");
-        int day = in.nextInt();
-        LocalDate closingDate = getCloseDate(year, month, day);
-        JobPosting newJob = createJobPosting(id, jobType, company,closingDate);
-        System.out.println("Do you want to add requirementText"+
-                "\n1. Yes" +
-                "\n2. No");
-        int choice = in.nextInt();
-        while (choice == 1){
-            String requirement = in.next();
-            addRequirements(newJob, requirement);
-            System.out.println("Do you want to continue add requirementText"+
-                    "\n1. Yes" +
-                    "\n2. No");
-            choice = in.nextInt();
-        }
-        FileWriter.writeToFile(newJob);
-    }
-
 }

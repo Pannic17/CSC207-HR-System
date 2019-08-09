@@ -25,9 +25,12 @@ public class LoginClass implements Serializable {
 
         LocalDate date = LocalDate.now();
         ArrayList<String > arrayList = new ArrayList<>();
-        ApplicantStatusMap applicantStatusMap = new ApplicantStatusMap("1","1","!");
+        ArrayList<String > reqList = new ArrayList<>();;
+        reqList.add("CV");
+        reqList.add("CoverLetter");
+        ApplicantStatusMap applicantStatusMap = new ApplicantStatusMap();
         Applicant applicant2 = new Applicant("admin","check","name",date);
-        JobPosting jp = new JobPosting(0,"","",1,date,date,arrayList,"Open",applicantStatusMap,false);
+        JobPosting jp = new JobPosting(001,"Receptionist","Apple",1,date,date,reqList,"Open",applicantStatusMap,false);
         applicantStatusMap.interview1List.add(applicant2);
         CV cv = new CV();
         cv.add("");

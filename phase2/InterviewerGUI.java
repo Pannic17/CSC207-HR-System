@@ -44,6 +44,7 @@ public class InterviewerGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.clear();
+                infoPane.setVisible(true);
                 recommendApplicant.setVisible(true);
                 rejectApplicant.setVisible(true);
                 InterviewerHelperMethods methods = new InterviewerHelperMethods();
@@ -91,7 +92,7 @@ public class InterviewerGUI {
                     infoLabel.setText("No applicant selected");
                 } else {
                     Applicant applicant = applicantMethods.getApplicant(selectedApplicant);
-                    interviewer.recommendedList.add(applicant);
+                    interviewer.notRecommendedList.add(applicant);
                     infoLabel.setText("Successfully Recommended");
                 }
             }

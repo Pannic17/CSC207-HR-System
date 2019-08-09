@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class InterviewerHelperMethods extends Helpers implements Serializable {
     public InterviewerHelperMethods() {
@@ -17,7 +18,25 @@ public class InterviewerHelperMethods extends Helpers implements Serializable {
             return false;
         }
     }
+    public  void assignApplicantToInteviewer(Interviewer interviewer) {
+        //check if the interviewer has been assigned a applicant pool
+        ApplicantHelperMethods helpers = new ApplicantHelperMethods();
+        if (interviewer.assignedJob == null) {
+            System.out.println("Please Assign a job to the interviewer First");
+        } else {
 
+            // print the list of applicants in the applicant pool
+            System.out.println(helpers.applicantArraytoString(interviewer.assignedJob.applicantStatus.getAllApplicants()));
+            // ask for the name of the applicant
+            System.out.println("Please enter the name of the Applicant To view  his/her Documents");
+            Scanner in2 = new Scanner(System.in);
+            String name = in2.nextLine();
+            Applicant applicant = helpers.getApplicant(name);
+            // move the applicant to the next interview pool
+            interviewer.applicantsInterviewingList.add(applicant);
+            interviewer.assignedJob.applicantStatus.moveApplicantToNextPool(applicant);
+        }
+    }
     public boolean usernameExists(String username) {
         HashMap<String, Interviewer> hashMap = FileReader.readInterviewerFile();
         if (hashMap.isEmpty()) {

@@ -23,7 +23,8 @@ public class HRGUI {
     JButton assign;
     JButton getResult;
     JLabel infoLabel;
-    DefaultListModel<String> model;
+    DefaultListModel<String> model1;
+    DefaultListModel<String> model2;
     HRCoordinator hrCoordinator;
 
     public HRGUI(GUI frame, HRCoordinator hrCoordinator){
@@ -34,7 +35,9 @@ public class HRGUI {
         this.panel.setVisible(true);
         this.hrPrompts = new HRPrompts();
         this.hrCoordinator = hrCoordinator;
-        this.model = new DefaultListModel<>();
+        this.model1 = new DefaultListModel<>();
+        this.model2 = new DefaultListModel<>();
+
 
         this.information();
         this.applicantInterface();
@@ -68,13 +71,13 @@ public class HRGUI {
                 }else {
                     Applicant applicant = applicantMethods.getApplicant(selected1);
                     if (applicant.coverLetter.equals(null) && applicant.cv.equals(null)) {
-                        infoLabel.setText("The applicant's documents are not available.");
+                        infoText.setText("The applicant's documents are not available.");
                     } else {
                         if (applicant.coverLetter != null) {
-                            infoLabel.setText(applicant.coverLetter.letter);
+                            infoText.setText(applicant.coverLetter.letter);
                         }
                         if (applicant.cv != null) {
-                            infoLabel.setText(applicant.cv.cvString);
+                            infoText.setText(applicant.cv.cvString);
                         }
                     }
                 }
@@ -95,15 +98,15 @@ public class HRGUI {
                 infoText.setVisible(true);
                 ApplicantHelperMethods applicantMethods = new ApplicantHelperMethods();
                 if (selected1==null){
-                    infoLabel.setText("No applicant selected");
+                    infoText.setText("No applicant selected");
                 }else {
                     Applicant applicant = applicantMethods.getApplicant(selected1);
                     ArrayList<String> arrayList = applicantMethods.jobpostingArraytoString(hrCoordinator.applicantJobsAppliedInCompany(applicant));
                     if (arrayList.size() < 1) {
-                        infoLabel.setText("The applicant has not applied for a job yet");
+                        infoText.setText("The applicant has not applied for a job yet");
                     } else {
                         for (String applies: arrayList){
-                            infoLabel.setText(applies+"\n");
+                            infoText.setText(applies+"\n");
                         }
                     }
                 }
@@ -119,14 +122,15 @@ public class HRGUI {
         showApplicant.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!model.isEmpty()){ clearInfo();}
+                model1.clear();
+                clearInfo();
                 infoPane1.setVisible(true);
                 viewDocuments.setVisible(true);
                 viewJobsApplied.setVisible(true);
                 JobApplicationSystem jbs = new JobApplicationSystem();
                 for (Applicant applicant: jbs.getApplicantList().values()){
-                    model.addElement(applicant.toString());
-                    infoList1.setModel(model);
+                    model1.addElement(applicant.name);
+                    infoList1.setModel(model1);
                 }
             }
         });
@@ -145,16 +149,14 @@ public class HRGUI {
         showInterviewer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!model.isEmpty()){ clearModel();}
+                if (!model1.isEmpty()){ clearModel();}
                 clearInfo();
                 getResult.setVisible(true);
                 infoPane1.setVisible(true);
-                viewDocuments.setVisible(true);
-                viewJobsApplied.setVisible(true);
                 JobApplicationSystem jbs = new JobApplicationSystem();
                 for (Interviewer interviewer: jbs.getInterviewerList().values()){
-                    model.addElement(interviewer.toString());
-                    infoList1.setModel(model);
+                    model1.addElement(interviewer.name);
+                    infoList1.setModel(model1);
                 }
             }
         });
@@ -166,8 +168,14 @@ public class HRGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 clearInfo();
+                model2.clear();
                 getResult.setVisible(true);
                 infoPane1.setVisible(true);
+                JobApplicationSystem jbs = new JobApplicationSystem();
+                for (JobPosting job: jbs.getJobPostingList().values()){
+                    model2.addElement(job.jobType);
+                    infoList2.setModel(model2);
+                }
                 infoPane2.setVisible(true);
                 assign.setVisible(true);
             }
@@ -180,8 +188,14 @@ public class HRGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 clearInfo();
+                model2.clear();
                 getResult.setVisible(true);
                 infoPane1.setVisible(true);
+                JobApplicationSystem jbs = new JobApplicationSystem();
+                for (Applicant applicant: jbs.getApplicantList().values()){
+                    model2.addElement(applicant.name);
+                    infoList2.setModel(model2);
+                }
                 infoPane2.setVisible(true);
                 match.setVisible(true);
             }
@@ -225,11 +239,6 @@ public class HRGUI {
                 assign.setVisible(true);
                 InterviewerHelperMethods interviewerMethods = new InterviewerHelperMethods();
                 ApplicantHelperMethods applicantMethods = new ApplicantHelperMethods();
-                JobApplicationSystem jbs = new JobApplicationSystem();
-                for (Applicant applicant: jbs.getApplicantList().values()){
-                    model.addElement(applicant.toString());
-                    infoList2.setModel(model);
-                }
                 if (selected1==null){
                     infoLabel.setText("No interviewer selected");
                 }else {
@@ -240,6 +249,7 @@ public class HRGUI {
                         Applicant applicant =applicantMethods.getApplicant(selected2);
                         interviewer.applicantsInterviewingList.add(applicant);
                         interviewer.assignedJob.applicantStatus.moveApplicantToNextPool(applicant);
+                        infoLabel.setText("Successfully Matched");
                     }
                 }
             }
@@ -259,11 +269,6 @@ public class HRGUI {
                 assign.setVisible(true);
                 InterviewerHelperMethods interviewerMethods = new InterviewerHelperMethods();
                 JobPostingHelperMethods jobPostingMethods = new JobPostingHelperMethods();
-                JobApplicationSystem jbs = new JobApplicationSystem();
-                for (JobPosting job : jbs.getJobPostingList().values()) {
-                    model.addElement(job.status);
-                    infoList2.setModel(model);
-                }
                 if (selected1==null){
                     infoLabel.setText("No interviewer selected");
                 }else {
@@ -273,6 +278,7 @@ public class HRGUI {
                         Interviewer interviewer = interviewerMethods.getInterviewerWithName(selected1);
                         JobPosting job = jobPostingMethods.getPosting(selected2);
                         interviewer.assignJob(job);
+                        infoLabel.setText("Successfully Assigned");
                     }
                 }
             }
@@ -309,9 +315,10 @@ public class HRGUI {
     }
 
     void clearModel(){
-        model.clear();
-        infoList1.setModel(model);
-        infoList2.setModel(model);
+        model1.clear();
+        model2.clear();
+        infoList1.setModel(model1);
+        infoList2.setModel(model1);
     }
 
     void clearInfo(){

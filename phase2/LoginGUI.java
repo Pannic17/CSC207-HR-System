@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Scanner;
 
 public class LoginGUI {
     JPanel panel;
@@ -16,6 +16,8 @@ public class LoginGUI {
     String passwordEnter;
     JTextField userText;
     JPasswordField passwordText;
+    JLabel loginStatus;
+    Serializable user;
 
     public LoginGUI(GUI frame){
 
@@ -30,6 +32,7 @@ public class LoginGUI {
         this.loginConfig(this.panel);
         this.loginInterface(this.panel);
         this.signUp(this.panel);
+        this.loginStatus(this.panel);
     }
 
     public void loginConfig(JPanel configPanel){
@@ -101,39 +104,121 @@ public class LoginGUI {
                 //TODO
                 passwordEnter = new String(passwordText.getPassword());
                 usernameEnter = userText.getText();
-                //checkPassword();
-                LocalDate date =LocalDate.now();
-                Serializable userA = new Applicant("1","1","1", date);
-                Serializable userB = new Interviewer("1","1","1");
-                Serializable userC = new HRCoordinator("1","1","1","1");
-                checkType(userA);
+
+                //LocalDate date =LocalDate.now();
+                //Serializable userA = new Applicant("1","1","1", date);
+                //Serializable userB = new Interviewer("1","1","1");
+                //Serializable userC = new HRCoordinator("1","1","1","1");
+                if (checkPassword(usernameEnter, passwordEnter)){
+                    panel.setVisible(false);
+                    checkType(user);
+                }else {
+                    userText.setText("");
+                    passwordText.setText("");
+                }
             }
         });
 
     }
 
+    boolean applicantLogin(String username, String password){
+        ApplicantHelperMethods methods = new ApplicantHelperMethods();
+        if (methods.usernameExists(username)) {
+            Applicant applicant = methods.getApplicantWithUsername(username);
+            if (applicant.password.equals(password)) {
+                user = applicant;
+                return true;
+            } else {
+                loginStatus.setText("The password doesn't match");
+                return false;
+            }
+        } else {
+            loginStatus.setText("The username doesn't exist");
+            return false;
+        }
+    }
+
+    boolean interviewerLogin(String username, String password){
+        InterviewerHelperMethods methods = new InterviewerHelperMethods();
+        if (methods.usernameExists(username)) {
+            Interviewer interviewer = methods.getInterviewerWithUsername(username);
+            if (interviewer.password.equals(password)) {
+                user = interviewer;
+                return true;
+            } else {
+                loginStatus.setText("The password doesn't match");
+                return false;
+            }
+        } else {
+            loginStatus.setText("The username doesn't exist");
+            return false;
+        }
+    }
+
+    boolean hrLogin(String username, String password){
+        HRHelperMethods methods = new HRHelperMethods();
+        if (methods.usernameExists(username)) {
+            HRCoordinator hr = methods.getHRwithUsername(username);
+            if (hr.password.equals(password)) {
+                user = hr;
+                return true;
+            } else {
+                loginStatus.setText("The password doesn't match");
+                return false;
+            }
+        } else {
+            loginStatus.setText("The username doesn't exist");
+            return false;
+        }
+    }
+
+    boolean checkPassword(String username, String password){
+        loginStatus.setText("");
+        if (selection.equals("Applicant")){ return applicantLogin(username, password); }
+        else { if (selection.equals("Interviewer")){ return interviewerLogin(username, password); }
+        else { if (selection.equals("HR Coordinator")){ return hrLogin(username, password); }
+        else { loginStatus.setText("Please select user type."); return false;} }
+        }
+    }
+
     void checkType(Serializable user){
-        panel.setVisible(false);
         LocalDate date =LocalDate.now();
         if (this.selection.equals("Applicant")){
-            //Applicant applicant = (Applicant) user;
+            Applicant applicant = (Applicant) user;
             Applicant applicantTest =  new Applicant("1","1","1", date);
-            ApplicantGUI applicantGUI = new ApplicantGUI(frame, applicantTest);
+            ApplicantGUI applicantGUI = new ApplicantGUI(frame, applicant);
         }else {
             if (this.selection.equals("Interviewer")){
                 Interviewer interviewerTest = new Interviewer("1","1","1");
-                //Interviewer interviewer = (Interviewer) user;
-                InterviewerGUI interviewerGUI = new InterviewerGUI(frame, interviewerTest);
+                Interviewer interviewer = (Interviewer) user;
+                InterviewerGUI interviewerGUI = new InterviewerGUI(frame, interviewer);
             }else {
                 if (this.selection.equals("HR Coordinator")){
-                    //HRCoordinator hrCoordinator = (HRCoordinator) user;
-                    HRCoordinator hrCoordinator = new HRCoordinator("1","1","1","1");
+                    HRCoordinator hrCoordinator = (HRCoordinator) user;
+                    HRCoordinator hrTest = new HRCoordinator("1","1","1","1");
                     HRGUI hrGUI = new HRGUI(frame, hrCoordinator);
                 }else {
                     LoginGUI loginGUI = new LoginGUI(frame);
                 }
             }
         }
+    }
+
+    void loginStatus(JPanel loginPanel){
+
+        JButton forgetPassword = new JButton("Forget Password");
+        forgetPassword.setBounds(10,210,350,25);
+        loginPanel.add(forgetPassword);
+        forgetPassword.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ChangePassword();
+            }
+        });
+
+        loginStatus = new JLabel("");
+        loginStatus.setBounds(10,240,350,25);
+        loginPanel.add(loginStatus);
     }
 
     public void signUp(JPanel loginPanel){
@@ -143,13 +228,10 @@ public class LoginGUI {
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 signUpHelper(loginPanel);
             }
         });
     }
-
-    //push
 
     void signUpHelper(JPanel loginPanel){
         loginPanel.setVisible(false);

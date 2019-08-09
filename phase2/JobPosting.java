@@ -18,7 +18,7 @@ public class JobPosting implements Serializable {
     public JobPosting() {
     }
 
-    public JobPosting(int id, String jobType, String hiringCompany,LocalDate dateOfClosing, ArrayList<String> requirementsList) {
+    public JobPosting(int id, String jobType, String hiringCompany, LocalDate dateOfClosing, ArrayList<String> requirementsList) {
         this.jobId = id;
         this.jobType = jobType;
         this.hiringCompany = hiringCompany;
@@ -27,7 +27,7 @@ public class JobPosting implements Serializable {
         this.dateOfClosing = dateOfClosing;
         this.requirementsList = requirementsList;
         this.status = getStatus();
-        //this.applicantStatus = new ApplicantStatusMap();
+        this.applicantStatus = new ApplicantStatusMap();
         this.isHired = false;
         FileWriter.writeToFile(this);
 
@@ -49,7 +49,7 @@ public class JobPosting implements Serializable {
         this.status = status;
         this.applicantStatus = applicantStatus;
         this.isHired = isHired;
-//        FileWriter.firstWriteToFile(this);
+        FileWriter.firstWriteToFile(this);
     }
 
     @Override
@@ -59,9 +59,9 @@ public class JobPosting implements Serializable {
                 ", Hiring Company: " + this.hiringCompany +
                 ", Number of People Hiring: " + this.numOfPeopleHiring +
                 ", Date Of posting: " + this.dateOfPosting.toString() +
-                ", Date of Closing" + this.dateOfClosing.toString() +
-                ", Requirement List" + Helpers.arrayToString(this.requirementsList) +
-                ", Status: " + this.status;
+                ", Date of Closing: " + this.dateOfClosing.toString() +
+                ", Requirement List: " + Helpers.arrayToString(this.requirementsList) +
+                ", Status: " + this.status + "\n";
     }
 
     public void viewJobPosting() {
@@ -72,10 +72,16 @@ public class JobPosting implements Serializable {
 
     public void apply(Applicant applicant) {
         // when applying to a job posting an applicant will be added to the submitted list
-        if((this.requirementsList.contains("CV") && applicant.cv!= null)|(this.requirementsList.contains("CoverLetter")&& applicant.coverLetter!=null)){
-        this.applicantStatus.submittedList.add(applicant);
-        applicant.jobsAppliedTo.add(this);
-        applicant.jobsEverAppliedTo.add(this);}
+        if (this.applicantStatus.containsValue(applicant)) {
+            System.out.println("You have already applied for this Job");
+            return;
+        }
+        if ((this.requirementsList.contains("CV") && applicant.cv != null) | (this.requirementsList.contains("CoverLetter") && applicant.coverLetter != null)) {
+            this.applicantStatus.submittedList.add(applicant);
+            System.out.println("Applied");
+            applicant.jobsAppliedTo.add(this);
+            applicant.jobsEverAppliedTo.add(this);
+        }
 
     }
 

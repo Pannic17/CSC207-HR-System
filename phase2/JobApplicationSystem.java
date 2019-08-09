@@ -9,11 +9,11 @@ public class JobApplicationSystem {
     public JobApplicationSystem() {
     }
 
-    public static LocalDate today = LocalDate.now(); // Format is year-month-date
-    public static String applicantFileName = "ApplicantFile";
-    public static String interviewerFileName = "InterviewerFile";
-    public static String HrFileName = "HRFile";
-    public static String jobPostingFileName = "JobPostingFile";
+    public  LocalDate today = LocalDate.now(); // Format is year-month-date
+    public  String applicantFileName = "ApplicantFile";
+    public  String interviewerFileName = "InterviewerFile";
+    public  String HrFileName = "HRFile";
+    public  String jobPostingFileName = "JobPostingFile";
 
 
 //    public HashMap<Integer, JobPosting> JobPostingList = FileReader.readJobPostingFile();

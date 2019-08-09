@@ -69,17 +69,17 @@ public class CreateGUI extends JFrame{
 
 
         this.idText = new JTextField(20);
-        this.idText.setBounds(150,90,210,25);
+        this.idText.setBounds(150,60,210,25);
         this.panel.add(idText);
 
 
         this.typeText = new JTextField(20);
-        this.typeText.setBounds(150,120,210,25);
+        this.typeText.setBounds(150,90,210,25);
         this.panel.add(typeText);
 
 
         this.companyText = new JTextField(20);
-        this.companyText.setBounds(150,150,210,25);
+        this.companyText.setBounds(150,120,210,25);
         this.panel.add(companyText);
 
         this.yearText = new JTextField(4);

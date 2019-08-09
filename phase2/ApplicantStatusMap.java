@@ -4,29 +4,23 @@
 // will be created on creating a new job posting and initially every list will be empty
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class ApplicantStatusMap {
+public class ApplicantStatusMap implements Serializable {
     public ArrayList<Applicant> submittedList;
     public ArrayList<Applicant> phoneInterviewList;
     public ArrayList<Applicant> interview1List;
     public ArrayList<Applicant> interview2List;
     public ArrayList<Applicant> interview3List;
 
-    public String interview1Type;
-    public String interview2Type;
-    public String interview3Type;
-
-    public ApplicantStatusMap(String interview1Type, String interview2Type, String interview3Type) {
+    public ApplicantStatusMap() {
         this.submittedList = new ArrayList<>();
         this.phoneInterviewList = new ArrayList<>();
         this.interview1List = new ArrayList<>();
         this.interview2List = new ArrayList<>();
         this.interview3List = new ArrayList<>();
-        this.interview1Type = interview1Type;
-        this.interview2Type = interview2Type;
-        this.interview3Type = interview3Type;
     }
 
 
@@ -147,8 +141,11 @@ public class ApplicantStatusMap {
 
 
     public boolean containsValue(Applicant applicant) {
-        return submittedList.contains(applicant) | phoneInterviewList.contains(applicant) | interview1List.contains(applicant)
-                | interview2List.contains(applicant) | interview3List.contains(applicant);
+        return submittedList.contains(applicant) |
+                phoneInterviewList.contains(applicant) |
+                interview1List.contains(applicant)
+                | interview2List.contains(applicant) |
+                interview3List.contains(applicant);
     }
 
     public String getPoolContainingValue(Applicant applicant) {
@@ -166,16 +163,5 @@ public class ApplicantStatusMap {
         return "Applicant has not applied for this job";
     }
 
-    public void setInterview1Type(String newType) {
-        this.interview1Type = newType;
-    }
-
-    public void setInterview2Type(String newType) {
-        this.interview1Type = newType;
-    }
-
-    public void setInterview3Type(String newType) {
-        this.interview1Type = newType;
-    }
 }
 

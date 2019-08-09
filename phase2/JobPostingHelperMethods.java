@@ -1,3 +1,5 @@
+import com.sun.javaws.security.AppPolicy;
+
 import java.io.Serializable;
 
 public class JobPostingHelperMethods extends Helpers implements Serializable {
@@ -23,5 +25,7 @@ public class JobPostingHelperMethods extends Helpers implements Serializable {
         System.out.println("Job Posting with this name cannot be found");
         return null;
     }
+
+
 }
 

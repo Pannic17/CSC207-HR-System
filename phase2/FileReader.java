@@ -5,14 +5,12 @@ public class FileReader implements Serializable {
     public FileReader() {
     }
 
-// TODO: Convert to generic
 
     public static HashMap<Integer, JobPosting> readJobPostingFile() {
-        System.out.println("Job Posting File");
         HashMap<Integer, JobPosting> map = null;
-
+        JobApplicationSystem jbs = new JobApplicationSystem();
         try {
-            FileInputStream fis = new FileInputStream(JobApplicationSystem.jobPostingFileName + ".ser");
+            FileInputStream fis = new FileInputStream(jbs.jobPostingFileName + ".ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             map = (HashMap) ois.readObject();
             ois.close();
@@ -33,10 +31,10 @@ public class FileReader implements Serializable {
     }
 
     public static HashMap<String, Applicant> readApplicantFile() {
-        System.out.println("Reading Applicant File");
         HashMap<String, Applicant> map = null;
+        JobApplicationSystem jbs = new JobApplicationSystem();
         try {
-            FileInputStream fis = new FileInputStream(JobApplicationSystem.applicantFileName + ".ser");
+            FileInputStream fis = new FileInputStream(jbs.applicantFileName + ".ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             map = (HashMap) ois.readObject();
             ois.close();
@@ -58,11 +56,11 @@ public class FileReader implements Serializable {
 
 
     public static HashMap<String, Interviewer> readInterviewerFile() {
-        System.out.println("Interviewer File");
         // should return a hashmap of all interviewers in the file
         HashMap<String, Interviewer> map = null;
+        JobApplicationSystem jbs = new JobApplicationSystem();
         try {
-            FileInputStream fis = new FileInputStream(JobApplicationSystem.interviewerFileName + ".ser");
+            FileInputStream fis = new FileInputStream(jbs.interviewerFileName + ".ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             map = (HashMap) ois.readObject();
             ois.close();
@@ -83,12 +81,11 @@ public class FileReader implements Serializable {
 
 
     public static HashMap<String, HRCoordinator> readHRcoordinatorFile() {
-        System.out.println("HR File");
         // should return a hashmap of all interviewers in the file
         HashMap<String, HRCoordinator> map = null;
-
+        JobApplicationSystem jbs = new JobApplicationSystem();
         try {
-            FileInputStream fis = new FileInputStream(JobApplicationSystem.HrFileName + ".ser");
+            FileInputStream fis = new FileInputStream(jbs.HrFileName + ".ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             map = (HashMap) ois.readObject();
             ois.close();

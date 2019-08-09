@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,8 +42,6 @@ public class HRCoordinator implements Serializable {
         }
         return toReturn;
     }
-
-
 
 
 

@@ -20,6 +20,7 @@ public class Helpers implements Serializable {
     public static String arrayToString(ArrayList<String> name){
 //        Convert an arraylist to a string
 //        TODO: check if takes into account an empty list
+        if (name.size() < 1){return "[]";}
         String ret = "[";
         for(int i=0; i<name.size() ; i++){
             ret += " "+name.get(i) +", ";
@@ -44,7 +45,7 @@ public class Helpers implements Serializable {
 //        TODO: check if takes into account an empty list
         ArrayList<String> stringList = new ArrayList<>();
         for (int i = 0; i <arrayList.size() ; i++) {
-            stringList.add( arrayList.get(i).jobType);
+            stringList.add( arrayList.get(i).toString());
         }
 
         return stringList;
