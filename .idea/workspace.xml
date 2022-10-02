@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="693c1c07-37df-4e4c-9772-935b084a82a3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/phase1/.idea/dictionaries/tejbeer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/.idea/qaplug_profiles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/Applicant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/ApplicantPrompts.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/ChangePassword.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/HRCoordinator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/Info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/Interviewer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/JobApplicationSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/JobPosting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/JobPostingPrompts.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/LoginClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/Notification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/Password.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/ReadFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/TextGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/WriteFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.idea/dictionaries/tejbeer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.idea/qaplug_profiles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/out/production/phase1/phase1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase1/phase1.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FaSoplIEVqg1lhTOWnrLN4xjAb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI" />
+      <module name="CSC207-HR-System" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GUI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="693c1c07-37df-4e4c-9772-935b084a82a3" name="Changes" comment="" />
+      <created>1664728879431</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664728879431</updated>
+      <workItem from="1664728880589" duration="114000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
